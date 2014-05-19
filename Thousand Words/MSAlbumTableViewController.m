@@ -7,6 +7,7 @@
 //
 
 #import "MSAlbumTableViewController.h"
+#import "Album.h"
 //conforming to the UIAlertViewDelegate 
 @interface MSAlbumTableViewController () <UIAlertViewDelegate>
 
@@ -18,14 +19,6 @@
 {
     if (!_photoAlbums) _photoAlbums = [[NSMutableArray alloc] init];
     return _photoAlbums;
-}
-
-- (IBAction)addAlbumBarButtonPressed:(UIBarButtonItem *)sender
-{
-    //Notice that we did set a delegate in the AlertView below to self so that the view recognizes which button is being pressed in the AlertView
-    UIAlertView *newAlbumAlertView = [[UIAlertView alloc] initWithTitle:@"Enter New Album Name" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
-    [newAlbumAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [newAlbumAlertView show];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -54,6 +47,51 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBActions
+
+- (IBAction)addAlbumBarButtonPressed:(UIBarButtonItem *)sender
+{
+    //Notice that we did set a delegate in the AlertView below to self so that the view recognizes which button is being pressed in the AlertView
+    UIAlertView *newAlbumAlertView = [[UIAlertView alloc] initWithTitle:@"Enter New Album Name" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+    [newAlbumAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [newAlbumAlertView show];
+}
+
+#pragma mark - Helper Methods
+//In this method we access our apps delegate and from that get our NSManagedObjectContext. Each NSManagedObject belongs to only one NSManagedObjectContext. Below that we create and album object and use the entities that we set up in the Album.h as properties of the NSManagedObject. This method saves the object to Core Data.
+-(Album *)albumWtihName:(NSString *)albumName
+{
+    id delegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    Album *album = [NSEntityDescription insertNewObjectForEntityForName:@"Album" inManagedObjectContext:context];
+    album.name = albumName;
+    album.date = [NSDate date];
+    
+    NSError *error = nil;
+    if (![context save:&error])
+    {
+        //we have an error
+        NSLog(@"%@", error);
+    }
+    return album;
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        NSString *alertText = [alertView textFieldAtIndex:0].text;
+        [self.photoAlbums addObject:[self albumWtihName:alertText]];
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.photoAlbums count]-1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        //used literals above to replace the initilized Album method below to make a bit cleaner code.
+        //Album *newAlbum = [self albumWtihName:alertText];
+        //[self.photoAlbums addObject:newAlbum];
+        //[self.tableView reloadData];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -74,7 +112,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    
+    Album *selectedAlbum = self.photoAlbums[indexPath.row];
+    cell.textLabel.text = selectedAlbum.name;
     return cell;
 }
 
