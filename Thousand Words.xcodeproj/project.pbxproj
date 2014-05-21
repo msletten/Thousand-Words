@@ -24,7 +24,13 @@
 		08159CE51926914400DB879A /* Thousand_WordsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 08159CE41926914400DB879A /* Thousand_WordsTests.m */; };
 		08159CEF1926965700DB879A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08159CEE1926965700DB879A /* Storyboard.storyboard */; };
 		08159CF2192696F700DB879A /* MSAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08159CF1192696F700DB879A /* MSAlbumTableViewController.m */; };
-		08159CF51926A4B200DB879A /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 08159CF41926A4B200DB879A /* Album.m */; };
+		08C257EC192ACDED007B0497 /* MSCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257EB192ACDED007B0497 /* MSCoreDataHelper.m */; };
+		08C257EF192D301C007B0497 /* MSPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257EE192D301C007B0497 /* MSPhotosCollectionViewController.m */; };
+		08C257F2192D33BF007B0497 /* MSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257F1192D33BF007B0497 /* MSPhotoCollectionViewCell.m */; };
+		08C257F4192D5722007B0497 /* astronaut.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 08C257F3192D5722007B0497 /* astronaut.jpg */; };
+		08C257F7192D6CD2007B0497 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257F6192D6CD2007B0497 /* Photo.m */; };
+		08C257FA192D6CD2007B0497 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257F9192D6CD2007B0497 /* Album.m */; };
+		08C257FE192D6D74007B0497 /* MSPictureDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257FD192D6D74007B0497 /* MSPictureDataTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +65,19 @@
 		08159CEE1926965700DB879A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		08159CF0192696F700DB879A /* MSAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAlbumTableViewController.h; sourceTree = "<group>"; };
 		08159CF1192696F700DB879A /* MSAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAlbumTableViewController.m; sourceTree = "<group>"; };
-		08159CF31926A4B200DB879A /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
-		08159CF41926A4B200DB879A /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		08C257EA192ACDED007B0497 /* MSCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCoreDataHelper.h; sourceTree = "<group>"; };
+		08C257EB192ACDED007B0497 /* MSCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCoreDataHelper.m; sourceTree = "<group>"; };
+		08C257ED192D301C007B0497 /* MSPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPhotosCollectionViewController.h; sourceTree = "<group>"; };
+		08C257EE192D301C007B0497 /* MSPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPhotosCollectionViewController.m; sourceTree = "<group>"; };
+		08C257F0192D33BF007B0497 /* MSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		08C257F1192D33BF007B0497 /* MSPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		08C257F3192D5722007B0497 /* astronaut.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = astronaut.jpg; sourceTree = "<group>"; };
+		08C257F5192D6CD2007B0497 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		08C257F6192D6CD2007B0497 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		08C257F8192D6CD2007B0497 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
+		08C257F9192D6CD2007B0497 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		08C257FC192D6D74007B0497 /* MSPictureDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPictureDataTransformer.h; sourceTree = "<group>"; };
+		08C257FD192D6D74007B0497 /* MSPictureDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPictureDataTransformer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,10 +145,14 @@
 				08159CEE1926965700DB879A /* Storyboard.storyboard */,
 				08159CF0192696F700DB879A /* MSAlbumTableViewController.h */,
 				08159CF1192696F700DB879A /* MSAlbumTableViewController.m */,
-				08159CF31926A4B200DB879A /* Album.h */,
-				08159CF41926A4B200DB879A /* Album.m */,
+				08C257ED192D301C007B0497 /* MSPhotosCollectionViewController.h */,
+				08C257EE192D301C007B0497 /* MSPhotosCollectionViewController.m */,
+				08C257F0192D33BF007B0497 /* MSPhotoCollectionViewCell.h */,
+				08C257F1192D33BF007B0497 /* MSPhotoCollectionViewCell.m */,
+				08C257EA192ACDED007B0497 /* MSCoreDataHelper.h */,
+				08C257EB192ACDED007B0497 /* MSCoreDataHelper.m */,
 				08159CD01926914400DB879A /* Images.xcassets */,
-				08159CCD1926914400DB879A /* Thousand_Words.xcdatamodeld */,
+				08C257FB192D6CFF007B0497 /* CoreData */,
 				08159CC21926914400DB879A /* Supporting Files */,
 			);
 			path = "Thousand Words";
@@ -140,6 +161,7 @@
 		08159CC21926914400DB879A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				08C257F3192D5722007B0497 /* astronaut.jpg */,
 				08159CC31926914400DB879A /* Thousand Words-Info.plist */,
 				08159CC41926914400DB879A /* InfoPlist.strings */,
 				08159CC71926914400DB879A /* main.m */,
@@ -164,6 +186,20 @@
 				08159CE11926914400DB879A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08C257FB192D6CFF007B0497 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				08159CCD1926914400DB879A /* Thousand_Words.xcdatamodeld */,
+				08C257F8192D6CD2007B0497 /* Album.h */,
+				08C257F9192D6CD2007B0497 /* Album.m */,
+				08C257F5192D6CD2007B0497 /* Photo.h */,
+				08C257F6192D6CD2007B0497 /* Photo.m */,
+				08C257FC192D6D74007B0497 /* MSPictureDataTransformer.h */,
+				08C257FD192D6D74007B0497 /* MSPictureDataTransformer.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08159CC61926914400DB879A /* InfoPlist.strings in Resources */,
+				08C257F4192D5722007B0497 /* astronaut.jpg in Resources */,
 				08159CD11926914400DB879A /* Images.xcassets in Resources */,
 				08159CEF1926965700DB879A /* Storyboard.storyboard in Resources */,
 			);
@@ -265,9 +302,14 @@
 			files = (
 				08159CCC1926914400DB879A /* MSAppDelegate.m in Sources */,
 				08159CC81926914400DB879A /* main.m in Sources */,
+				08C257FE192D6D74007B0497 /* MSPictureDataTransformer.m in Sources */,
 				08159CCF1926914400DB879A /* Thousand_Words.xcdatamodeld in Sources */,
-				08159CF51926A4B200DB879A /* Album.m in Sources */,
+				08C257F7192D6CD2007B0497 /* Photo.m in Sources */,
+				08C257EC192ACDED007B0497 /* MSCoreDataHelper.m in Sources */,
+				08C257EF192D301C007B0497 /* MSPhotosCollectionViewController.m in Sources */,
+				08C257FA192D6CD2007B0497 /* Album.m in Sources */,
 				08159CF2192696F700DB879A /* MSAlbumTableViewController.m in Sources */,
+				08C257F2192D33BF007B0497 /* MSPhotoCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +510,7 @@
 				08159CEA1926914400DB879A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		08159CEB1926914400DB879A /* Build configuration list for PBXNativeTarget "Thousand WordsTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +519,7 @@
 				08159CED1926914400DB879A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

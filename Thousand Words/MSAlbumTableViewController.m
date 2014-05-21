@@ -8,6 +8,7 @@
 
 #import "MSAlbumTableViewController.h"
 #import "Album.h"
+#import "MSCoreDataHelper.h"
 //conforming to the UIAlertViewDelegate 
 @interface MSAlbumTableViewController () <UIAlertViewDelegate>
 
@@ -48,10 +49,8 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Album"];
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     
-    id delegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [delegate managedObjectContext];
     NSError *error = nil;
-    NSArray *fetchedAlbums = [context executeFetchRequest:fetchRequest error:&error];
+    NSArray *fetchedAlbums = [[MSCoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     self.photoAlbums = [fetchedAlbums mutableCopy];
     [self.tableView reloadData];
 }
@@ -76,8 +75,7 @@
 //In this method we access our apps delegate and from that get our NSManagedObjectContext. Each NSManagedObject belongs to only one NSManagedObjectContext. Below that we create and album object and use the entities that we set up in the Album.h as properties of the NSManagedObject. This method saves the object to Core Data.
 -(Album *)albumWtihName:(NSString *)albumName
 {
-    id delegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSManagedObjectContext *context = [MSCoreDataHelper managedObjectContext];
     Album *album = [NSEntityDescription insertNewObjectForEntityForName:@"Album" inManagedObjectContext:context];
     album.name = albumName;
     album.date = [NSDate date];

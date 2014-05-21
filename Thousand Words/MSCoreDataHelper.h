@@ -10,4 +10,6 @@
 
 @interface MSCoreDataHelper : NSObject
 
++(NSManagedObjectContext *)managedObjectContext;
+
 @end

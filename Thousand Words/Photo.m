@@ -1,19 +1,19 @@
 //
-//  Album.m
+//  Photo.m
 //  Thousand Words
 //
 //  Created by Mat Sletten on 5/21/14.
 //  Copyright (c) 2014 Mat Sletten. All rights reserved.
 //
 
-#import "Album.h"
 #import "Photo.h"
+#import "Album.h"
 
 
-@implementation Album
+@implementation Photo
 
+@dynamic image;
 @dynamic date;
-@dynamic name;
-@dynamic photos;
+@dynamic albumBook;
 
 @end
