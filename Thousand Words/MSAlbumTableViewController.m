@@ -41,6 +41,21 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+//How do we get back the information stored in Core Data. First, we call our super classes viewWillAppear method so that any functionality declared in our superclass gets called. Next we create an NSFetchRequest object. This is used as search criteria for NSMangedObjects in our persistent store or database. We simply pass in the entity that we want to grab from our database. In this case the entity is Album, so it grabs any entity named Album. Notice that the fetch request takes one more parameter, a context or scratchpad used to find the objects. Remember that we get the context from our App Delegate. Remember that calling mutableCopy on an array, makes that NSArray into an NSMutableArray.
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Album"];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    
+    id delegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSError *error = nil;
+    NSArray *fetchedAlbums = [context executeFetchRequest:fetchRequest error:&error];
+    self.photoAlbums = [fetchedAlbums mutableCopy];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
