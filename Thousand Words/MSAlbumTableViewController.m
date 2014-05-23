@@ -9,6 +9,7 @@
 #import "MSAlbumTableViewController.h"
 #import "Album.h"
 #import "MSCoreDataHelper.h"
+#import "MSPhotosCollectionViewController.h"
 //conforming to the UIAlertViewDelegate 
 @interface MSAlbumTableViewController () <UIAlertViewDelegate>
 
@@ -169,16 +170,21 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"Album Chosen"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[MSPhotosCollectionViewController class]])
+        {
+            NSIndexPath *albumPath = [self.tableView indexPathForSelectedRow];
+            MSPhotosCollectionViewController *targetViewController = segue.destinationViewController;
+            targetViewController.album = self.photoAlbums[albumPath.row];
+        }
+    }
 }
-
- */
 
 @end
