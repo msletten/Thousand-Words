@@ -11,6 +11,7 @@
 #import "Photo.h"
 #import "MSPictureDataTransformer.h"
 #import "MSCoreDataHelper.h"
+#import "MSPhotoDetailViewController.h"
 
 @interface MSPhotosCollectionViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 //UIImagePickerController inherets from UINavigationController
@@ -40,17 +41,37 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //We need to query core data to get back all the photos for a specific album. The photos will be in an unordered NSSet, then we will order the photos in an array according to their date.
+    
+}
+//We need to query core data to get back all the photos for a specific album. The photos will be in an unordered NSSet, then we will order the photos in an array according to their date. The photo appears even though it has been deleted from core data. The discrepancy comes from where we are performing our fetchrequest in our TWPhotosCollectionViewController. We perform our fetch on viewDidLoad, but remember, our viewcontroller is always in memory when we push new view controllers on the stack! A more apt place would be viewWillAppear!
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     NSSet *unorderedPhotos = self.album.photos;
     NSSortDescriptor *dateDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     NSArray *sortedPhotos = [unorderedPhotos sortedArrayUsingDescriptors:@[dateDescriptor]];
     self.photos = [sortedPhotos mutableCopy];
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detailSegue"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[MSPhotoDetailViewController class]])
+        {
+            MSPhotoDetailViewController *targetViewController = segue.destinationViewController;
+            NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+            Photo *selectedPhoto = self.photos[indexPath.row];
+            targetViewController.photo = selectedPhoto;
+        }
+    }
 }
 
 //First, we allocate and initialize an UIImagePickerController programmatically. Remember that the UIImagePickerController view object did not come from the storyboard! Next, we set the delegate property to self so that this ViewController will be able to receive messages from the UIImagePickerController delegate. After we check what type of image picker is available. If we are using a phone the camera will be available so we will select that. If we are testing on our simulator we will use the Photo Album to select our photo. The last line is how we present a ViewController modally. Modally means that it will take over the full screen.

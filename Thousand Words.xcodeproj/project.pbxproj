@@ -31,6 +31,8 @@
 		08C257F7192D6CD2007B0497 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257F6192D6CD2007B0497 /* Photo.m */; };
 		08C257FA192D6CD2007B0497 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257F9192D6CD2007B0497 /* Album.m */; };
 		08C257FE192D6D74007B0497 /* MSPictureDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C257FD192D6D74007B0497 /* MSPictureDataTransformer.m */; };
+		08CF200819351737009248A1 /* MSPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF200719351737009248A1 /* MSPhotoDetailViewController.m */; };
+		08CF200B193552F1009248A1 /* MSFiltersCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF200A193552F1009248A1 /* MSFiltersCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,10 @@
 		08C257F9192D6CD2007B0497 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
 		08C257FC192D6D74007B0497 /* MSPictureDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPictureDataTransformer.h; sourceTree = "<group>"; };
 		08C257FD192D6D74007B0497 /* MSPictureDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPictureDataTransformer.m; sourceTree = "<group>"; };
+		08CF200619351737009248A1 /* MSPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPhotoDetailViewController.h; sourceTree = "<group>"; };
+		08CF200719351737009248A1 /* MSPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPhotoDetailViewController.m; sourceTree = "<group>"; };
+		08CF2009193552F1009248A1 /* MSFiltersCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFiltersCollectionViewController.h; sourceTree = "<group>"; };
+		08CF200A193552F1009248A1 /* MSFiltersCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFiltersCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,12 +149,16 @@
 				08159CCA1926914400DB879A /* MSAppDelegate.h */,
 				08159CCB1926914400DB879A /* MSAppDelegate.m */,
 				08159CEE1926965700DB879A /* Storyboard.storyboard */,
+				08CF2009193552F1009248A1 /* MSFiltersCollectionViewController.h */,
+				08CF200A193552F1009248A1 /* MSFiltersCollectionViewController.m */,
 				08159CF0192696F700DB879A /* MSAlbumTableViewController.h */,
 				08159CF1192696F700DB879A /* MSAlbumTableViewController.m */,
 				08C257ED192D301C007B0497 /* MSPhotosCollectionViewController.h */,
 				08C257EE192D301C007B0497 /* MSPhotosCollectionViewController.m */,
 				08C257F0192D33BF007B0497 /* MSPhotoCollectionViewCell.h */,
 				08C257F1192D33BF007B0497 /* MSPhotoCollectionViewCell.m */,
+				08CF200619351737009248A1 /* MSPhotoDetailViewController.h */,
+				08CF200719351737009248A1 /* MSPhotoDetailViewController.m */,
 				08C257EA192ACDED007B0497 /* MSCoreDataHelper.h */,
 				08C257EB192ACDED007B0497 /* MSCoreDataHelper.m */,
 				08159CD01926914400DB879A /* Images.xcassets */,
@@ -302,12 +312,14 @@
 			files = (
 				08159CCC1926914400DB879A /* MSAppDelegate.m in Sources */,
 				08159CC81926914400DB879A /* main.m in Sources */,
+				08CF200B193552F1009248A1 /* MSFiltersCollectionViewController.m in Sources */,
 				08C257FE192D6D74007B0497 /* MSPictureDataTransformer.m in Sources */,
 				08159CCF1926914400DB879A /* Thousand_Words.xcdatamodeld in Sources */,
 				08C257F7192D6CD2007B0497 /* Photo.m in Sources */,
 				08C257EC192ACDED007B0497 /* MSCoreDataHelper.m in Sources */,
 				08C257EF192D301C007B0497 /* MSPhotosCollectionViewController.m in Sources */,
 				08C257FA192D6CD2007B0497 /* Album.m in Sources */,
+				08CF200819351737009248A1 /* MSPhotoDetailViewController.m in Sources */,
 				08159CF2192696F700DB879A /* MSAlbumTableViewController.m in Sources */,
 				08C257F2192D33BF007B0497 /* MSPhotoCollectionViewCell.m in Sources */,
 			);
