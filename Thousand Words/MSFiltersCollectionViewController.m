@@ -80,7 +80,6 @@
     CGRect extent = [filteredImage extent];
     CGImageRef cgImage = [self.context createCGImage:filteredImage fromRect:extent];
     UIImage *finalImage = [UIImage imageWithCGImage:cgImage];
-    NSLog(@"look at all of this data %@", UIImagePNGRepresentation(finalImage));
     return finalImage;
 }
 
@@ -91,7 +90,16 @@
     static NSString *CellIdentifier = @"Photo Cell";
     MSPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithRed:218/255.0f green:165/255.0f blue:32/255.0f alpha:1/1.0f];
-    cell.photoImageView.image = [self filteredImageFromImage:self.filteredPhoto.image andFilter:self.filters[indexPath.row]];
+    //In our example, we are running all of our filter logic on another thread and then updating our imageview on the main thread. This allows the viewController to display much faster than if we were to perform all the logic on the filters before allowing the view controller to display. In this case the method filteredImageFromImageandFilters are pushed to another thread while the main thread handles the UI.
+    dispatch_queue_t filterQueue = dispatch_queue_create("filter queue", NULL);
+    dispatch_async(filterQueue, ^{
+        UIImage *filterImage = [self filteredImageFromImage:self.filteredPhoto.image andFilter:self.filters[indexPath.row]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.photoImageView.image = filterImage;
+        });
+    });
+    //We replaced below with the above. Below all the filter processes had to complete before loading the view controller. Above, we set up a grand central dispatch to do the work asynchronously.
+    //cell.photoImageView.image = [self filteredImageFromImage:self.filteredPhoto.image andFilter:self.filters[indexPath.row]];
     return cell;
 }
 
@@ -106,12 +114,15 @@
 {
     MSPhotoCollectionViewCell *selectedCell = (MSPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     self.filteredPhoto.image = selectedCell.photoImageView.image;
-    NSError *error = nil;
-    if (![[self.filteredPhoto managedObjectContext] save:&error])
+    if (self.filteredPhoto.image)
     {
-        //handle error
+        NSError *error = nil;
+        if (![[self.filteredPhoto managedObjectContext] save:&error])
+        {
+            //handle error
+        }
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
